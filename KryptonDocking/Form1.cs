@@ -27,6 +27,7 @@ namespace KryptonDocking
 
         //Console console = new Console();
 
+        int pageCount = 2;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -35,9 +36,10 @@ namespace KryptonDocking
             dockingManager.ManageFloating("Floating", this);
 
 
-            dockingManager.AddDockspace("Control", DockingEdge.Left, new KryptonPage[] { NewPage(new SelectorList(), "Selector") });
-            dockingManager.AddDockspace("Control", DockingEdge.Right, new KryptonPage[] { NewPage(new PropertyGrid(), "Properites") });
-            dockingManager.AddToWorkspace("Workspace", new KryptonPage[] { NewPage(new TextEditor(), "Text Document"), NewPage(new TextEditor(), "Text Document") });
+            dockingManager.AddDockspace("Control", DockingEdge.Left, new KryptonPage[] { NewPage(new SelectorList() , "Selector") } );
+            dockingManager.AddDockspace("Control", DockingEdge.Right, new KryptonPage[] { NewPage(new PropertyGrid() , "Properites") });
+            dockingManager.AddToWorkspace("Workspace", new KryptonPage[] { NewPage(new TextEditor(), "Text Document"), NewPage(new TextEditor(), "Text Document 2") });
+                      
 
             console.AddText("Persisted docking states not loaded.");
             console.AddText("My.Settings location: " + ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
@@ -94,6 +96,27 @@ namespace KryptonDocking
         {
             console.AddText("Docking Persistence String:");
             console.AddText(Properties.Settings.Default.DockingPersistenceString);
+        }
+
+        private void AddTextDocumentBT_Click(object sender, EventArgs e)
+        {
+            pageCount += 1;
+            dockingManager.AddToWorkspace("Workspace", new KryptonPage[] { NewPage(new TextEditor() { Name = $"Text Document {pageCount}" }, $"Text Document {pageCount}") });
+            console.AddText($"New Document added. No of Workspace Cells: {dockingManager.Cells.Count()}. No of Pages: {dockingManager.Pages.Count()}");
+
+
+
+        }
+
+        private void GetInfoBT_Click(object sender, EventArgs e)
+        {
+            console.AddText("State Info:");
+            console.AddText($"No of Workspace Cells: {dockingManager.Cells.Count()}. No of Pages: {dockingManager.Pages.Count()}");
+            console.AddText("Pages:");
+            foreach (var page in dockingManager.Pages)
+            {
+                console.AddText($"Name: {page.TextTitle}. Size: {page.ClientSize}");
+            }
         }
     }
 }

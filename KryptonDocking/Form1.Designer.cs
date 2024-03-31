@@ -30,17 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.SaveDockingBT = new System.Windows.Forms.ToolStripButton();
-            this.LoadWindowsBT = new System.Windows.Forms.ToolStripButton();
-            this.ResetDockingBT = new System.Windows.Forms.ToolStripButton();
-            this.ViewWindowsStringBT = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonDockableWorkspace1 = new Krypton.Docking.KryptonDockableWorkspace();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.dockingManager = new Krypton.Docking.KryptonDockingManager();
-            this.console = new KryptonDocking.UserControls.Console();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.console = new KryptonDocking.UserControls.Console();
+            this.SaveDockingBT = new System.Windows.Forms.ToolStripButton();
+            this.LoadWindowsBT = new System.Windows.Forms.ToolStripButton();
+            this.ResetDockingBT = new System.Windows.Forms.ToolStripButton();
+            this.ViewWindowsStringBT = new System.Windows.Forms.ToolStripButton();
+            this.AddTextDocumentBT = new System.Windows.Forms.ToolStripButton();
+            this.GetInfoBT = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -59,12 +61,80 @@
             this.SaveDockingBT,
             this.LoadWindowsBT,
             this.ResetDockingBT,
-            this.ViewWindowsStringBT});
+            this.ViewWindowsStringBT,
+            this.AddTextDocumentBT,
+            this.GetInfoBT});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(952, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.kryptonDockableWorkspace1);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Padding = new System.Windows.Forms.Padding(2);
+            this.kryptonPanel1.Size = new System.Drawing.Size(952, 293);
+            this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kryptonDockableWorkspace1
+            // 
+            this.kryptonDockableWorkspace1.ActivePage = null;
+            this.kryptonDockableWorkspace1.AutoHiddenHost = false;
+            this.kryptonDockableWorkspace1.CompactFlags = ((Krypton.Workspace.CompactFlags)(((Krypton.Workspace.CompactFlags.RemoveEmptyCells | Krypton.Workspace.CompactFlags.RemoveEmptySequences) 
+            | Krypton.Workspace.CompactFlags.PromoteLeafs)));
+            this.kryptonDockableWorkspace1.ContainerBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
+            this.kryptonDockableWorkspace1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDockableWorkspace1.Location = new System.Drawing.Point(2, 2);
+            this.kryptonDockableWorkspace1.Name = "kryptonDockableWorkspace1";
+            // 
+            // 
+            // 
+            this.kryptonDockableWorkspace1.Root.UniqueName = "d40fe784de934f13b02da6e6d4309b72";
+            this.kryptonDockableWorkspace1.Root.WorkspaceControl = this.kryptonDockableWorkspace1;
+            this.kryptonDockableWorkspace1.SeparatorStyle = Krypton.Toolkit.SeparatorStyle.LowProfile;
+            this.kryptonDockableWorkspace1.ShowMaximizeButton = false;
+            this.kryptonDockableWorkspace1.Size = new System.Drawing.Size(948, 289);
+            this.kryptonDockableWorkspace1.SplitterWidth = 5;
+            this.kryptonDockableWorkspace1.TabIndex = 1;
+            this.kryptonDockableWorkspace1.TabStop = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 612);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(952, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.kryptonPanel1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.console);
+            this.splitContainer1.Size = new System.Drawing.Size(952, 587);
+            this.splitContainer1.SplitterDistance = 293;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // console
+            // 
+            this.console.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.console.Location = new System.Drawing.Point(0, 0);
+            this.console.Name = "console";
+            this.console.Size = new System.Drawing.Size(952, 290);
+            this.console.TabIndex = 2;
             // 
             // SaveDockingBT
             // 
@@ -110,71 +180,27 @@
             this.ViewWindowsStringBT.ToolTipText = "Show docking persistence string";
             this.ViewWindowsStringBT.Click += new System.EventHandler(this.ViewWindowsStringBT_Click);
             // 
-            // kryptonPanel1
+            // AddTextDocumentBT
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonDockableWorkspace1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.kryptonPanel1.Size = new System.Drawing.Size(952, 293);
-            this.kryptonPanel1.TabIndex = 1;
+            this.AddTextDocumentBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddTextDocumentBT.Image = global::KryptonDocking.Properties.Resources.plus_button;
+            this.AddTextDocumentBT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddTextDocumentBT.Name = "AddTextDocumentBT";
+            this.AddTextDocumentBT.Size = new System.Drawing.Size(23, 22);
+            this.AddTextDocumentBT.Text = "toolStripButton1";
+            this.AddTextDocumentBT.ToolTipText = "Add Text Document to Document Group";
+            this.AddTextDocumentBT.Click += new System.EventHandler(this.AddTextDocumentBT_Click);
             // 
-            // kryptonDockableWorkspace1
+            // GetInfoBT
             // 
-            this.kryptonDockableWorkspace1.ActivePage = null;
-            this.kryptonDockableWorkspace1.AutoHiddenHost = false;
-            this.kryptonDockableWorkspace1.CompactFlags = ((Krypton.Workspace.CompactFlags)(((Krypton.Workspace.CompactFlags.RemoveEmptyCells | Krypton.Workspace.CompactFlags.RemoveEmptySequences) 
-            | Krypton.Workspace.CompactFlags.PromoteLeafs)));
-            this.kryptonDockableWorkspace1.ContainerBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            this.kryptonDockableWorkspace1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonDockableWorkspace1.Location = new System.Drawing.Point(2, 2);
-            this.kryptonDockableWorkspace1.Name = "kryptonDockableWorkspace1";
-            // 
-            // 
-            // 
-            this.kryptonDockableWorkspace1.Root.UniqueName = "d40fe784de934f13b02da6e6d4309b72";
-            this.kryptonDockableWorkspace1.Root.WorkspaceControl = this.kryptonDockableWorkspace1;
-            this.kryptonDockableWorkspace1.SeparatorStyle = Krypton.Toolkit.SeparatorStyle.LowProfile;
-            this.kryptonDockableWorkspace1.ShowMaximizeButton = false;
-            this.kryptonDockableWorkspace1.Size = new System.Drawing.Size(948, 289);
-            this.kryptonDockableWorkspace1.SplitterWidth = 5;
-            this.kryptonDockableWorkspace1.TabIndex = 1;
-            this.kryptonDockableWorkspace1.TabStop = true;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 612);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(952, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // console
-            // 
-            this.console.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.console.Location = new System.Drawing.Point(0, 0);
-            this.console.Name = "console";
-            this.console.Size = new System.Drawing.Size(952, 290);
-            this.console.TabIndex = 2;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.kryptonPanel1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.console);
-            this.splitContainer1.Size = new System.Drawing.Size(952, 587);
-            this.splitContainer1.SplitterDistance = 293;
-            this.splitContainer1.TabIndex = 3;
+            this.GetInfoBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.GetInfoBT.Image = global::KryptonDocking.Properties.Resources.information;
+            this.GetInfoBT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GetInfoBT.Name = "GetInfoBT";
+            this.GetInfoBT.Size = new System.Drawing.Size(23, 22);
+            this.GetInfoBT.Text = "toolStripButton1";
+            this.GetInfoBT.ToolTipText = "Get full info about present state";
+            this.GetInfoBT.Click += new System.EventHandler(this.GetInfoBT_Click);
             // 
             // Form1
             // 
@@ -216,6 +242,8 @@
         private System.Windows.Forms.ToolStripButton ViewWindowsStringBT;
         private UserControls.Console console;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStripButton AddTextDocumentBT;
+        private System.Windows.Forms.ToolStripButton GetInfoBT;
     }
 }
 
